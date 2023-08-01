@@ -1,0 +1,15 @@
+The FinalProjectNew folder contains all of the different thread 
+scheudling algorithm implementations. 
+The cs439_s22_p3_henry, priorityQueue, RandomChoice, and RandomPriority folders
+cs439_s22_p3_henry just implements round robin
+can all run the test that shows off how the priority queue is good.
+The test is called PT2. Just go into the folder and run make -s PT2.test;
+The cs439_s22_p5_henry, Random Choice, RandomPriority, ShortestJobFirst, and LongestJobFirst
+cs439_s22_p5_henry implements a round robin queue
+can all run the test looking at minimizing turnournd time
+the test is called ShortestTestNew. Just go into the folder and run make -s ShortestTestNew.test;
+If you want to run the ShortestTestNew test multiple times and save the turnaround time values
+that it outputs 
+make -s ShortestTestNew.test && cat t0.out >> results && ... (over and over again as many times as you like)
+all of the values (average turnaorund times) printing during the executon of multiple 
+make -s ShortestTestNew.test will be stored in results for your viewing pleasure

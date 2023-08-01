@@ -1,0 +1,37 @@
+
+Your name: Henry Plante
+
+Your CSID: henry
+
+Your team name: henry (group 15)
+
+What do you plan on doing?: Thread Scheduling algorithms
+
+How do you plan on doing it?: I plan on implemting Shortest Job First, Longest Job First
+, two random algorithms, and a priority queue. I will have to change the threads.cc and threads.h
+implementations. In addition for some of the algotrithms I will implement a ready heap as opposed to a 
+readyQ to get with insertion and retrival of threads efficiency. For some of the algorithms I also will have
+to chnage the implemetatons of the syncronization primitives.
+
+What research did you do?: I researched what other thread Scheduling algorithms
+exists and how to analyze how good they are and what situtations they are good for
+
+What alternatives did you consider?: Improving the file system - getting writeing working
+
+What did you decide to do?: Thread Scheduling algorithms
+
+What did you you learn so far?: I learned how there are many ways to measure
+how good a Scheduling algorith is. You can look at average wait time, averge turnaround time
+, how fair it is, if it is prone to starvation. And situations where one might be better than 
+another.
+https://www.geeksforgeeks.org/comparison-of-different-cpu-scheduling-algorithms-in-os/
+I also leanred a bit about random number generation.
+https://crypto.stackexchange.com/questions/42340/usage-difference-between-x86-rdrand-and-rdseed
+https://en.wikipedia.org/wiki/RDRAND
+I also learned a bit about shell instructions and how to make output form a command go into a file
+and how to tell the shell to do multiple commands in succesion.
+
+
+Who are the team members? how much did each contribute?
+Henry - 110%
+
