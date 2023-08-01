@@ -1,0 +1,15 @@
+.nfs*
+*.d
+*.time
+*.failure
+*.raw
+*.out
+*.result
+*.diff
+*.data
+disks/
+all_tests/
+all_results/
+my_results/
+my_submission/
+history

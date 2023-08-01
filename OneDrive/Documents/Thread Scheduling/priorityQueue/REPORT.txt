@@ -1,0 +1,52 @@
+- Read about counting semaphores and condition variables and explain why
+  they're considered "universal" synchronization primitives
+  A semaphore is a synchronization primitive that allows a specific amount
+  of threads into a critical section. A semaphore that only allows one thread into 
+  a critical section would essentailly be the same as a 
+  https://stackoverflow.com/questions/34519/what-is-a-semaphore
+  A condition variable is similar in that it will prevent a thread from entering a section
+  if a value is not set. However, if that valaue is not set than that thread will sleep.
+  condition variable has another method that will set that value and wake up a thread that
+  was waiting for it to get set.
+  https://web.stanford.edu/~ouster/cgi-bin/cs140-spring14/lecture.php?topic=locks
+  https://docs.microsoft.com/en-us/windows/win32/sync/condition-variables
+  These two primites are considered universal synchronization promitives because they
+  solve very common issues that deal with syncronization, ie only wanting a specific number of threads
+  in a section of code and wanting a thread to just sleep and be able to get worken in 
+  when a value has been set. For example a condition variable
+  would probably be helpful when implementing bounded buffer. And a semaphore could be useful when
+  implementing resuable barrier.
+
+* What new race conditions are introduced by enabling interrupts
+  and preemption?
+  Because of preemption and interrupts its possible that calling SMP::me();
+  will cause race conditions. This is becasue you could call SMP::me() but by the time
+  you try to use that value the thread may have been preempted/interrupted and now you 
+  are running on a different core not the one where SMP::me() was called. This could lead
+  to unintedned behavior. Another race condition is that you can get preempted/ interrupted 
+  yield so you end up trying to yield when you are already yielding. This is bad depending where
+  you are in yield bad things could happen. A lot could get stuck lock. Issues could happen
+  if you are in the middle of context switching. Its also just useless to yield when already yielding
+
+
+* What changes did you make to your design/implementation
+  in order to defend against the new race conditions?
+  in order to protect against these race conditions I either diabled interrupts
+  during important parts of code, or set a flag that made it so if the thread got
+  interrupted it wouldn't actually get preempted.
+
+* why is "spinning" a bad idea? Explain
+spinning is bad because it is wasteful. Spinning is useless work. You are just waiting.
+You could be doing something useful, but instead you are just running a useless loop over 
+and over again
+
+* can we avoid spinning? Explain
+Yes, Instead of spinning, you can instead add that thread that would be spinning 
+to some sort of queue where it will wait. Instead of doing useless work while it waits, 
+it will let some other thread do work. Once the thing that would need to get set to make
+the thread stop spinning gets set, the thread gets added back to the readyQ to get to try
+and continue its execution again. Essentially, instead of spinning it goes into a queue and 
+waits to get waken again by another thread that sets whatever value would've caused
+the thread to stop spinning.
+
+
